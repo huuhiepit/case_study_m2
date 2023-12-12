@@ -1,0 +1,19 @@
+Question
+(long id, String content, String[] options, int correctOptionIndex, Subject subject,ELevel eLevel)
+
+ID || Content
+Answer: A. A | B. B | C. C | D. D | Correct: A | Level: Dễ | Subject: Xã hội,vvv
+-----------------------------------------------
+
+Question_Subject
+(long id, long idQuestion, long idSubject)
+
+Set Exam Level Subject
+long id, long idSetExam, ELevel eLevel, ESubject eSubject, int quantity
+SUBJECT1(1, "Khoa học"),
+    SUBJECT2(2, "Xã hội"),
+    SUBJECT3(3, "Toán học"),
+    SUBJECT4(4, "Tâm linh"),
+    SUBJECT5(5, "Thể thao");
+
+   1|Bộ đề chính|6|2023-12-12

@@ -1,0 +1,15 @@
+1|Thành phố đông dân nhất thế giới hiện nay là thành phố nào?|Tokyo|Mexico City|New York|New Dehli|0|Dễ
+2|Người châu Á đầu tiên đoạt giải F.Chopin|Đặng Thái Sơn|Đặng Thanh Hằng|Bùi Công Duy|Hoàng Thanh Trang|0|Khó
+3|Vệ tinh nhân tạo đầu tiên của Trái Đất có tên là gì?|Hòa Bình|Sputnik|ISS|ICS|1|Khó
+4|Đất nước Argentina nổi tiếng nhất với điệu nhảy cổ điển nào?|Tango|Salsa|Cha cha cha|Rumba|0|Trung bình
+5|DNA có nghĩa là gì?|Axit deoxyribonucleic|Axit deoxyribon|Axit deoxyr|Danamy Natriclorua Attrox|0|Dễ
+6|Một con bạch tuộc có bao nhiêu trái tim?|Hai chậu|Bốn chậu|Ba chậu|Một chậu|2|Trung bình
+7|Ai được coi là người phát minh ra điện thoại?|Ronaldo|Messi|AlexSander IV|Alexander Graham Bell|3|Trung bình
+8|Chất tự nhiên cứng nhất trên Trái đất là gì?|Kim cương|Đá quý|Ethinum|Sắt|0|Dễ
+9|Bạn hãy thực hiện tìm ra số tiếp theo của dãy số: 5, 16, 49, 104, ?|188|182|181|187|2|Khó
+10|Tìm số còn thiếu trong dãy số sau: 1, 6, 15, ?, 45, 66, 91?|12|19|27|28|3|Trung bình
+11|Quốc gia nào vô địch World Cup 2018?|Argentina|Pháp|Đức|Anh|1|Dễ
+12|Môn thể thao nào được coi là “môn thể thao vua”?|Bóng chày|Bóng bầu dục|Bóng nước|Bóng đá|3|Dễ
+13|Một trận bóng đá sẽ có bao nhiêu cầu thủ trên sân cỏ?|11 cầu thủ|14 cầu thủ|12 cầu thủ|22 cầu thủ|3|Khó
+14|Cái gì đen khi bạn mua nó, đỏ khi dùng nó và xám xịt khi vứt nó đi?|Cát|Than|Vàng|Cirum|1|Dễ
+15|Quần rộng nhất là quần gì?|Quần đảo|Quần đùi|Quần thể|Quần áo|0|Dễ
