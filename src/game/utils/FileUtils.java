@@ -13,6 +13,7 @@ public class FileUtils <T> {
         try (BufferedWriter bfw = new BufferedWriter(new BufferedWriter(new FileWriter(fileName)))) {
             for (T e : data) {
                 bfw.write(e + "\n");
+                bfw.flush();
             }
         } catch (Exception ignored) {
         }

@@ -1,10 +1,18 @@
 package game.view;
 
+import game.service.impl.*;
 import game.view.impl.IBaseView;
 
 import java.util.Scanner;
 
 public abstract class BaseView implements IBaseView {
+    protected IPlayerService playerService;
+    protected IQuestionService questionService;
+    protected IQuestionSubjectService questionSubjectService;
+    protected ISetExamService setExamService;
+    protected ISetExamPlayerService setExamPlayerService;
+    protected ISetExamLevelSubjectService setExamLevelSubjectService;
+
     protected Scanner scanner = new Scanner(System.in);
     public abstract void launcher();
     public int getNumberMinMax(String str, int min, int max) throws IndexOutOfBoundsException {

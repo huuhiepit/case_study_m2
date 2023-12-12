@@ -13,3 +13,5 @@
 13|Một trận bóng đá sẽ có bao nhiêu cầu thủ trên sân cỏ?|11 cầu thủ|14 cầu thủ|12 cầu thủ|22 cầu thủ|3|Khó
 14|Cái gì đen khi bạn mua nó, đỏ khi dùng nó và xám xịt khi vứt nó đi?|Cát|Than|Vàng|Cirum|1|Dễ
 15|Quần rộng nhất là quần gì?|Quần đảo|Quần đùi|Quần thể|Quần áo|0|Dễ
+16|Tại sao con người ăn cơm|Tại vì thích|Tại không thích|Chả biết|Cũng không biết nữa|1|Dễ
+17|Tại sao lại có cách|Không biết|Nữa|Tại sao|Thế|0|Trung bình

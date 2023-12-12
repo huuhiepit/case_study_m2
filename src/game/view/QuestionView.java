@@ -29,19 +29,21 @@ public class QuestionView extends BaseView implements IQuestionView {
     public void launcher() {
         int choice = 0;
         do {
-            DisplayUtils.drawDashSquare(50);
-            System.out.println("* * * * * * * * * * * * * * * * * * QUẢN LÝ CÁC CÂU HỎI? !!! * * * * * * * * * * * * * * * * *");
-            System.out.println("* * Nhập 1. Để xem danh sách các câu hỏi");
-            System.out.println("* * Nhập 2. Để thêm một câu hỏi");
-            System.out.println("* * Nhập 3. Để sửa một câu hỏi");
-            System.out.println("* * Nhập 4. Để xóa một câu hỏi");
-            System.out.println("* * Nhập 5. Để tìm kiếm câu hỏi (Theo nội dung câu hỏi)");
-            System.out.println("* * Nhập 6. Để tìm kiếm câu hỏi (Theo chủ đề)");
-            System.out.println("* * Nhập 0. Để thoát");
-            DisplayUtils.drawDashSquare(50);
 
+            DisplayUtils.drawDashSquare(50);
+            System.out.println("                                       ╔═════════════════════════════════════════════════════╗");
+            System.out.println("                                       ║                 QUẢN LÝ CÁC CÂU HỎI                 ║");
+            System.out.println("                                       ╠═════════════════════════════════════════════════════╣");
+            System.out.println("                                       ║ Tùy chọn:                                           ║");
+            System.out.println("                                       ║ :-▶  1. Xem danh sách câu hỏi                       ║");
+            System.out.println("                                       ║ :-▶  2. Thêm mới câu hỏi                            ║");
+            System.out.println("                                       ║ :-▶  3. Cập nhật câu hỏi                            ║");
+            System.out.println("                                       ║ :-▶  4. Xóa câu hỏi                                 ║");
+            System.out.println("                                       ║ :-▶  5. Tìm kiếm câu hỏi                            ║");
+            System.out.println("                                       ║ :-▶  0. Trở về                                      ║");
+            System.out.println("                                       ╚═════════════════════════════════════════════════════╝");
 
-            choice = getNumberMinMax("Nhập lựa chọn: ", 0, 6);
+            choice = getNumberMinMax("Nhập lựa chọn: ", 0, 5);
             switch (choice) {
                 case 1: {
                     showList();
@@ -62,20 +64,36 @@ public class QuestionView extends BaseView implements IQuestionView {
                     break;
                 }
                 case 5: {
-                    searchByContent();
-                    break;
-                }
-                case 6: {
-                    searchBySubject();
-                    break;
-                }
-                case 0: {
-                    choice = 0;
+                    searchByChoice();
                     break;
                 }
             }
         } while (choice != 0);
     }
+
+    private void searchByChoice() {
+        int choice;
+        do {
+            System.out.println("                                       ╔═════════════════════════════════════════════════════╗");
+            System.out.println("                                       ║                 QUẢN LÝ CÁC CÂU HỎI                 ║");
+            System.out.println("                                       ╠═════════════════════════════════════════════════════╣");
+            System.out.println("                                       ║ Tùy chọn:                                           ║");
+            System.out.println("                                       ║ :-▶  1. Tìm kiếm theo nội dung                      ║");
+            System.out.println("                                       ║ :-▶  2. Tìm kiếm theo chủ đề                        ║");
+            System.out.println("                                       ║ :-▶  0. Trở về                                      ║");
+            System.out.println("                                       ╚═════════════════════════════════════════════════════╝");
+            choice = getNumberMinMax("Nhập lựa chọn: ", 0, 2);
+            switch (choice) {
+                case 1:
+                    searchByContent();
+                    break;
+                case 2:
+                    searchBySubject();
+                    break;
+            }
+        } while (choice != 0);
+    }
+
     @Override
     public void show(Question question) {
         DisplayUtils.drawDashSquare(60);
@@ -109,40 +127,46 @@ public class QuestionView extends BaseView implements IQuestionView {
         DisplayUtils.drawDashSquare(60);
         show(questionNew);
         DisplayUtils.drawDashSquare(60);
-        System.out.println("* * Nhập 1. Để sửa nội dung câu hỏi");
-        System.out.println("* * Nhập 2. Để sửa các câu trả lời");
-        System.out.println("* * Nhập 3. Để sửa câu trả lời đúng");
-        System.out.println("* * Nhập 4. Để sửa độ khó của câu hỏi");
-        System.out.println("* * Nhập 5. Để sửa chủ đề của câu hỏi");
-//        System.out.println("* * Nhập 6. Để sửa toàn bộ thông tin câu hỏi");
-        System.out.println("* * Nhập 0. Để dừng");
-        DisplayUtils.drawDashSquare(60);
-        int actionEdit = getNumberMinMax("Nhập lựa chọn cần sửa: ", 0, 5);
-        switch (actionEdit) {
-            case 1: {
-                editContent(questionNew);
-                break;
-            }
-            case 2: {
-                editAnswer(questionNew);
-                break;
-            }
-            case 3: {
-                editAnswerCorrect(questionNew);
-                break;
-            }
-            case 4: {
-                editLevel(questionNew);
-                break;
-            }
-            case 5: {
-                editSubject(questionNew);
-                break;
-            }
+        int choiceMenu;
+        do {
+            System.out.println("                                       ╔═════════════════════════════════════════════════════╗");
+            System.out.println("                                       ║                 CẬP NHẬT CÂU HỎI                    ║");
+            System.out.println("                                       ╠═════════════════════════════════════════════════════╣");
+            System.out.println("                                       ║ Tùy chọn:                                           ║");
+            System.out.println("                                       ║ :-▶  1. Sửa nội dung câu hỏi                        ║");
+            System.out.println("                                       ║ :-▶  2. Sửa các câu trả lời                         ║");
+            System.out.println("                                       ║ :-▶  3. Sửa câu trả lời đúng                        ║");
+            System.out.println("                                       ║ :-▶  4. Sửa độ khó của câu hỏi                      ║");
+//            System.out.println("                                       ║ :-▶  5. Sửa chủ đề câu hỏi                          ║");
+            System.out.println("                                       ║ :-▶  0. Trở về                                      ║");
+            System.out.println("                                       ╚═════════════════════════════════════════════════════╝");
+            choiceMenu = getNumberMinMax("Nhập lựa chọn: ", 0, 4);
+            switch (choiceMenu) {
+                case 1: {
+                    editContent(questionNew);
+                    break;
+                }
+                case 2: {
+                    editAnswer(questionNew);
+                    break;
+                }
+                case 3: {
+                    editAnswerCorrect(questionNew);
+                    break;
+                }
+                case 4: {
+                    editLevel(questionNew);
+                    break;
+                }
+                case 5: {
+                    editSubject(questionNew);
+                    break;
+                }
 
-        }
-        questionService.update(questionNew);
-        showList();
+            }
+            questionService.update(questionNew);
+            show(questionNew);
+        } while (choiceMenu != 0);
     }
     @Override
     public void editSubject(Question questionNew) {
@@ -157,34 +181,42 @@ public class QuestionView extends BaseView implements IQuestionView {
 
     @Override
     public void editAnswer(Question questionNew) {
-        System.out.println("* * Nhập 1. Để sửa câu hỏi A");
-        System.out.println("* * Nhập 2. Để sửa câu hỏi B");
-        System.out.println("* * Nhập 3. Để sửa câu hỏi C");
-        System.out.println("* * Nhập 4. Để sửa câu hỏi D");
-        DisplayUtils.drawDashSquare(60);
-        int actionEdit = getNumberMinMax("Nhập lựa chọn: ", 1, 4);
-        switch (actionEdit) {
-            case 1: {
-                String answer1 = InputUtils.inputString("Nhập câu trả lời 1 mới: ", ValidateUtils.ANSWER_REGEX, "Lỗi, không hợp lê. Vui lòng nhập lại");
-                questionNew.setAnswer1(answer1);
-                break;
+        int choiceMenu;
+        do {
+            System.out.println("                                       ╔═════════════════════════════════════════════════════╗");
+            System.out.println("                                       ║                 CẬP NHẬT CÂU TRẢ LỜI                ║");
+            System.out.println("                                       ╠═════════════════════════════════════════════════════╣");
+            System.out.println("                                       ║ Tùy chọn:                                           ║");
+            System.out.println("                                       ║ :-▶  1. Sửa câu A                                   ║");
+            System.out.println("                                       ║ :-▶  2. Sửa câu B                                   ║");
+            System.out.println("                                       ║ :-▶  3. Sửa câu C                                   ║");
+            System.out.println("                                       ║ :-▶  4. Sửa câu D                                   ║");
+            System.out.println("                                       ║ :-▶  0. Trở về                                      ║");
+            System.out.println("                                       ╚═════════════════════════════════════════════════════╝");
+            choiceMenu = getNumberMinMax("Nhập lựa chọn: ", 0, 6);
+            switch (choiceMenu) {
+                case 1: {
+                    String answer1 = InputUtils.inputString("Nhập câu trả lời 1 mới: ", ValidateUtils.ANSWER_REGEX, "Lỗi, không hợp lê. Vui lòng nhập lại");
+                    questionNew.setAnswer1(answer1);
+                    break;
+                }
+                case 2: {
+                    String answer2 = InputUtils.inputString("Nhập câu trả lời 2 mới: ", ValidateUtils.ANSWER_REGEX, "Lỗi, không hợp lê. Vui lòng nhập lại");
+                    questionNew.setAnswer2(answer2);
+                    break;
+                }
+                case 3: {
+                    String answer3 = InputUtils.inputString("Nhập câu trả lời 3 mới: ", ValidateUtils.ANSWER_REGEX, "Lỗi, không hợp lê. Vui lòng nhập lại");
+                    questionNew.setAnswer3(answer3);
+                    break;
+                }
+                case 4: {
+                    String answer4 = InputUtils.inputString("Nhập câu trả lời 4 mới: ", ValidateUtils.ANSWER_REGEX, "Lỗi, không hợp lê. Vui lòng nhập lại");
+                    questionNew.setAnswer4(answer4);
+                    break;
+                }
             }
-            case 2: {
-                String answer2 = InputUtils.inputString("Nhập câu trả lời 2 mới: ", ValidateUtils.ANSWER_REGEX, "Lỗi, không hợp lê. Vui lòng nhập lại");
-                questionNew.setAnswer2(answer2);
-                break;
-            }
-            case 3: {
-                String answer3 = InputUtils.inputString("Nhập câu trả lời 3 mới: ", ValidateUtils.ANSWER_REGEX, "Lỗi, không hợp lê. Vui lòng nhập lại");
-                questionNew.setAnswer3(answer3);
-                break;
-            }
-            case 4: {
-                String answer4 = InputUtils.inputString("Nhập câu trả lời 4 mới: ", ValidateUtils.ANSWER_REGEX, "Lỗi, không hợp lê. Vui lòng nhập lại");
-                questionNew.setAnswer4(answer4);
-                break;
-            }
-        }
+        } while (choiceMenu != 0);
     }
 
     @Override
@@ -244,7 +276,7 @@ public class QuestionView extends BaseView implements IQuestionView {
     public void searchBySubject() {
         System.out.println("* * * * * * * * * * * * * * * TÌM KIẾM CÂU HỎI THEO CHỦ ĐỀ!!! * * * * * * * * * * * * * *");
         for (ESubject subject : ESubject.values()) {
-            System.out.printf("* * Nhập %s để tìm kiếm theo chủ đề: %s\n", subject.getId(), subject.getTopic());
+            System.out.printf("|| ||\t Nhập %s để tìm kiếm theo chủ đề: %s\n", subject.getId(), subject.getTopic());
         }
         int selectSubject = getNumberMinMax("Nhập lựa chọn: ", 1, ESubject.getMaxId());
         ESubject subject = ESubject.getBy(selectSubject);

@@ -20,12 +20,7 @@ import java.util.List;
 import java.util.Random;
 
 public class PlayerView extends BaseView implements IPlayerView {
-    private IPlayerService playerService;
-    private IQuestionService questionService;
-    private IQuestionSubjectService questionSubjectService;
-    private ISetExamService setExamService;
-    private ISetExamPlayerService setExamPlayerService;
-    private ISetExamLevelSubjectService setExamLevelSubjectService;
+
 
     public PlayerView() {
         playerService = new PlayerService();
@@ -85,7 +80,6 @@ public class PlayerView extends BaseView implements IPlayerView {
 
             if (flag) {
                 score += 1;
-                continue;
             } else {
                 break;
             }
@@ -129,8 +123,8 @@ public class PlayerView extends BaseView implements IPlayerView {
         DisplayUtils.drawDashSquare(50);
         System.out.printf("Câu hỏi %s: ", stt);
         System.out.printf("\t\t\t%s\n", question.getContent());
-        System.out.printf("\tA. %-25s ||| C. %-25s\n", question.getOptions()[0], question.getOptions()[2]);
-        System.out.printf("\tB. %-25s ||| D. %-25s\n", question.getOptions()[1], question.getOptions()[3]);
+        System.out.printf("\tA. %-25s ║ \tC. %-25s\n", question.getOptions()[0], question.getOptions()[2]);
+        System.out.printf("\tB. %-25s ║ \tD. %-25s\n", question.getOptions()[1], question.getOptions()[3]);
         DisplayUtils.drawDashSquare(50);
 
         String result = InputUtils.inputString("Nhập câu trả lời: ", ValidateUtils.ANSWER_PLAYER_REGEX, "Chỉ được nhập các từ A,B,C,D");

@@ -2,13 +2,10 @@ package game.view;
 
 import game.model.question.ELevel;
 import game.model.question.ESubject;
-import game.model.question.Question;
 import game.model.topic_set.SetExam;
 import game.model.topic_set.SetExamLevelSubject;
 import game.service.SetExamLevelSubjectService;
 import game.service.SetExamService;
-import game.service.impl.ISetExamLevelSubjectService;
-import game.service.impl.ISetExamService;
 import game.utils.DisplayUtils;
 import game.utils.InputUtils;
 import game.utils.ValidateUtils;
@@ -19,49 +16,56 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TopicSetView extends BaseView implements ITopicSetView {
-    private ISetExamService setExamService;
-    private ISetExamLevelSubjectService setExamLevelSubjectService;
     public TopicSetView() {
         this.setExamService = new SetExamService();
         this.setExamLevelSubjectService = new SetExamLevelSubjectService();
     }
     @Override
     public void launcher() {
-        DisplayUtils.drawDashSquare(50);
-        System.out.println("* * * * * * * * * * * * * * * * * * QUẢN LÝ BỘ ĐỀ CÂU HỎI!!! * * * * * * * * * * * * * * * * *");
-        System.out.println("* * Nhập 1. Hiển thị tất cả bộ đề");
-        System.out.println("* * Nhập 2. Hiển thị chi tiết bộ đề");
-        System.out.println("* * Nhập 3. Tạo mới bộ đề");
-        System.out.println("* * Nhập 4. Sửa bộ đề");
-        System.out.println("* * Nhập 5. Xóa một bộ đề");
-        System.out.println("* * Nhập 6. Để tìm kiếm bộ đề");
-        DisplayUtils.drawDashSquare(50);
-        int choice = getNumberMinMax("Nhập lựa chọn: ", 1, 6);
-        switch (choice) {
-            case 1: {
-                showList();
-                break;
+        int choice;
+        do {
+            System.out.println("                                       ╔═════════════════════════════════════════════════════╗");
+            System.out.println("                                       ║                 QUẢN LÝ BỘ ĐỀ CÂU HỎI               ║");
+            System.out.println("                                       ╠═════════════════════════════════════════════════════╣");
+            System.out.println("                                       ║ Tùy chọn:                                           ║");
+            System.out.println("                                       ║ :-▶  1. Hiển thị danh sách bộ đề                    ║");
+            System.out.println("                                       ║ :-▶  2. Hiển thị chi tiết bộ đề                     ║");
+            System.out.println("                                       ║ :-▶  3. Tạo mới bộ đề                               ║");
+//            System.out.println("                                       ║ :-▶  4. Cập nhật bộ đề                              ║");
+            System.out.println("                                       ║ :-▶  4. Xóa bộ đề                                   ║");
+            System.out.println("                                       ║ :-▶  5. Tìm kiếm bộ đề                              ║");
+            System.out.println("                                       ║ :-▶  0. Trở về                                      ║");
+            System.out.println("                                       ╚═════════════════════════════════════════════════════╝");
+            choice = getNumberMinMax("Nhập lựa chọn: ", 0, 5);
+            switch (choice) {
+                case 1: {
+                    showList();
+                    break;
+                }
+                case 2: {
+                    showDetails();
+                    break;
+                }
+                case 3: {
+                    add();
+                    break;
+                }
+                case 6: {
+//                    questionService.update();
+                    break;
+                }
+                case 4: {
+                    showList();
+                    delete();
+                    showList();
+                    break;
+                }
+                case 5: {
+                    search();
+                    break;
+                }
             }
-            case 2: {
-                showDetails();
-                break;
-            }
-            case 3: {
-                add();
-                break;
-            }
-            case 5: {
-                showList();
-                delete();
-                showList();
-                break;
-            }
-            case 6: {
-                search();
-                break;
-            }
-        }
-
+        } while (choice != 0);
     }
 
     @Override
@@ -133,9 +137,13 @@ public class TopicSetView extends BaseView implements ITopicSetView {
             if( totalQuantity >= quantityMaximum) {
                 break;
             }
-            System.out.printf("* * * * Tổng %s trên %s * * * *\n", totalQuantity, quantityMaximum);
-            System.out.println("* * Nhập 1. Để thêm mức độ và chủ đề cho bộ đề");
-            System.out.println("* * Nhập 0. Để dừng");
+            System.out.println("                                       ╔═════════════════════════════════════════════════════╗");
+            System.out.printf("                                       ║                 TỔNG %s TRÊN %s CÂU HỎI               ║\n", totalQuantity, quantityMaximum);
+            System.out.println("                                       ╠═════════════════════════════════════════════════════╣");
+            System.out.println("                                       ║ Tùy chọn:                                           ║");
+            System.out.println("                                       ║ :-▶  1. Thêm level và chủ đề cho các câu hỏi        ║");
+            System.out.println("                                       ║ :-▶  0. Để kết dừng                                 ║");
+            System.out.println("                                       ╚═════════════════════════════════════════════════════╝");
             choice = getNumberMinMax("Nhập lựa chọn: ", 0, 1);
 
             if (choice == 0) {
@@ -144,27 +152,18 @@ public class TopicSetView extends BaseView implements ITopicSetView {
 
             DisplayUtils.drawDashSquare(40);
             for (ESubject subject : ESubject.values()) {
-                System.out.printf("* * Nhập %s: Để chọn chủ đề %s\n", subject.getId(), subject.getTopic());
+                System.out.printf("|| || Nhập %s: Để chọn chủ đề %s\n", subject.getId(), subject.getTopic());
             }
             int selectSubject = getNumberMinMax("Nhập chủ đề: ", 1, ESubject.getMaxId());
 
             DisplayUtils.drawDashSquare(40);
             for (ELevel level : ELevel.values()) {
-                System.out.printf("* * Nhập %s: Để chọn mức độ %s\n", level.getId(), level.name());
+                System.out.printf("|| || Nhập %s: Để chọn mức độ %s\n", level.getId(), level.name());
             }
             int selectLevel = getNumberMinMax("Nhập mức độ: ", 1, ELevel.getMaxId());
 
             ESubject subject = ESubject.getBy(selectSubject);
             ELevel level = ELevel.getBy(selectLevel);
-
-//            ELevel level;
-//            if(totalQuantity <= 5) {
-//                level = ELevel.EASY;
-//            } else if(totalQuantity > 10) {
-//                level = ELevel.HARD;
-//            } else if(totalQuantity > 5 && totalQuantity <= 10) {
-//                level = ELevel.MEDIUM;
-//            }
 
             if (checkLevelSubjectExits(selectSubject, selectLevel, setExamLevelSubjects)) {
                 System.err.println("Bộ đề đã có chủ đề và mức độ này rồi, Xin vui lòng nhập lại!!!");
@@ -230,7 +229,7 @@ public class TopicSetView extends BaseView implements ITopicSetView {
             return;
         }
 
-        System.out.printf("* * * * * * * * * * * * * * * %s * * * * * * * * * * * * * * *", "DANH SÁCH CÁC BỘ ĐỀ TÌM KIẾM\n");
+        System.out.printf("* * * * * * * * * * * * * * * %s * * * * * * * * * * * * * * *\n", "DANH SÁCH CÁC BỘ ĐỀ TÌM KIẾM");
         List<SetExam> setExamsSearch = setExamService.findQuestionByContent(keyWord);
         if (setExamsSearch.isEmpty()) {
             System.err.println("Không tìm thấy câu hỏi nào!!!");
